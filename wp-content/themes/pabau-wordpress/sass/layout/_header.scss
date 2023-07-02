@@ -1,0 +1,117 @@
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .navbar-brand {
+        img {
+            @media (max-width: $breakpoint-md) {
+                width: 75%;
+            }
+        }
+    }
+
+    .menu-item {
+        a.nav-link {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 27px;
+            margin-right: 27px;
+            color: $white;
+
+            @media (max-width: $breakpoint-md) {
+                margin-left: 7px;
+                margin-right: 7px;
+                width: fit-content;
+            }
+
+            &.active {
+                color: $yellow;
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 1px;
+                background: $yellow;
+                transition: width .3s;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+
+            span {
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .navbar-toggler {
+        padding: 0px 8px;
+        border: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        span {
+            display: block;
+            background-color: $white;
+            height: 2px;
+            width: 21px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            left: 0;
+            opacity: 1;
+            transition: all 0.35s ease-out;
+            transform-origin: center left;
+
+            &:nth-child(1) {
+                margin-top: 0.3em;
+            }
+        }
+
+        &[aria-expanded="true"] {
+
+            &:not(.collapsed) {
+                span {
+                    background-color: transparent;
+
+                    &:nth-child(1) {
+                        transform: translate(15%, -33%) rotate(45deg);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+
+                    &:nth-child(3) {
+                        transform: translate(15%, 33%) rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .offcanvas {
+        .menu-item a.nav-link {
+            color: $black;
+
+            &.active {
+                color: $yellow;
+            }
+        }
+    }
+
+    .btn-close:focus {
+        box-shadow: unset;
+    }
+}
